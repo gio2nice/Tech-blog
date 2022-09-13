@@ -10,26 +10,16 @@ class User extends Model {
     }
 }
 
-// define the table columns and configuration
 User.init(
   {
-    // TABLE COLUMN DEFINITIONS
-    // define an id column
     id: {
-        // use the special Sequelize DataTypes object to define what type of data it is
         type: DataTypes.INTEGER,
-        // this is the Sequelize equivalent of SQL's `NOT NULL` option
         allowNull: false,
-        // define this comumn as the the Primary Key
         primaryKey: true,
-        // turn on auto increment
         autoIncrement: true
         },
-        // define a username column
         username: {
-        // define the data type
         type: DataTypes.STRING,
-        // require the data to be entered
         allowNull: false,
         validate: {
           notEmpty: true,
