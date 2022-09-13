@@ -133,16 +133,8 @@ router.post('/logout', withAuth, (req, res) => {
 
 // PUT /api/users/1 -- update an existing user
 router.put('/:id', withAuth, (req, res) => {
-    // update method
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  
-    // if req.body has exact key/value pairs to match the model, 
-    // you can just use `req.body` instead of calling out each property,
-    // allowing for updating only key/value pairs that are passed through
     User.update(req.body, {
-        // since there is a hook to hash only the password, the option is noted here
         individualHooks: true,
-        // use the id as the parameter for the individual user to be updated
         where: {
             id: req.params.id
         }
