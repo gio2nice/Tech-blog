@@ -25,35 +25,23 @@ User.init(
           notEmpty: true,
         }
         },
-        // define an email column
         email: {
-        // define the data type
         type: DataTypes.STRING,
-        // require the data to be entered
         allowNull: false,
-        // do not allow duplicate email values in this table
         unique: true,
-        // if allowNull is set to false, the data can be validated before creating the table data
         validate: {
-            // this will check the format of the entry as a valid email by pattern checking <string>@<string>.<string>
             isEmail: true
             }
         },
-        // define a password column
         password: {
-        // define the data type
         type: DataTypes.STRING,
-        // require the data to be entered
         allowNull: false,
         validate: {
-            // this means the password must be at least four characters long
             len: [4]
             }
         }
   },
   {
-    // TABLE CONFIGURATION OPTIONS (https://sequelize.org/v5/manual/models-definition.html#configuration))
-    // add hooks for the password hashing operation
     hooks: {
         // set up a beforeCreate lifecycle hook to hash the password before the object is created in the database
         // and return the new userdata object
